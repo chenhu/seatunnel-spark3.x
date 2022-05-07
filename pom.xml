@@ -25,7 +25,7 @@
     </parent>
 
     <groupId>org.apache.seatunnel</groupId>
-    <artifactId>seatunnel</artifactId>
+    <artifactId>seatunnel-spark3x</artifactId>
     <packaging>pom</packaging>
     <version>${revision}</version>
 
