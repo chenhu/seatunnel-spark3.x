@@ -20,7 +20,7 @@ import org.apache.seatunnel.common.config.CheckConfigUtil.checkAllExists
 import org.apache.seatunnel.common.config.CheckResult
 import org.apache.seatunnel.common.utils.StringTemplate
 import org.apache.seatunnel.shade.com.typesafe.config.ConfigFactory
-import org.apache.seatunnel.spark.elasticsearch.Config.{HOSTS, INDEX, INDEX_TYPE, INDEX_TIME_FORMAT, DEFAULT_INDEX_TIME_FORMAT, DEFAULT_INDEX, DEFAULT_INDEX_TYPE}
+import org.apache.seatunnel.spark.elasticsearch.Config.{DEFAULT_INDEX, DEFAULT_INDEX_TIME_FORMAT, DEFAULT_INDEX_TYPE, HOSTS, INDEX, INDEX_TIME_FORMAT, INDEX_TYPE}
 import org.apache.seatunnel.spark.SparkEnvironment
 import org.apache.seatunnel.spark.batch.SparkBatchSink
 import org.apache.spark.sql.{Dataset, Row}

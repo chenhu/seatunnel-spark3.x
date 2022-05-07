@@ -22,9 +22,6 @@ import org.apache.seatunnel.apis.BaseSource;
 import org.apache.seatunnel.apis.BaseTransform;
 import org.apache.seatunnel.env.Execution;
 import org.apache.seatunnel.env.RuntimeEnv;
-import org.apache.seatunnel.flink.FlinkEnvironment;
-import org.apache.seatunnel.flink.batch.FlinkBatchExecution;
-import org.apache.seatunnel.flink.stream.FlinkStreamExecution;
 import org.apache.seatunnel.spark.SparkEnvironment;
 import org.apache.seatunnel.spark.batch.SparkBatchExecution;
 import org.apache.seatunnel.spark.stream.SparkStreamingExecution;
@@ -62,16 +59,6 @@ public class ExecutionFactory<ENVIRONMENT extends RuntimeEnv> {
                         break;
                     default:
                         execution = new SparkBatchExecution(sparkEnvironment);
-                }
-                break;
-            case FLINK:
-                FlinkEnvironment flinkEnvironment = (FlinkEnvironment) executionContext.getEnvironment();
-                switch (executionContext.getJobMode()) {
-                    case STREAMING:
-                        execution = new FlinkStreamExecution(flinkEnvironment);
-                        break;
-                    default:
-                        execution = new FlinkBatchExecution(flinkEnvironment);
                 }
                 break;
             default:

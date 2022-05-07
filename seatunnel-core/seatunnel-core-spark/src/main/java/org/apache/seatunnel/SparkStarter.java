@@ -195,11 +195,12 @@ public class SparkStarter implements Starter {
         if (!Files.exists(pluginRootDir) || !Files.isDirectory(pluginRootDir)) {
             return Collections.emptyList();
         }
+
         try (Stream<Path> stream = Files.walk(pluginRootDir, PLUGIN_LIB_DIR_DEPTH, FOLLOW_LINKS)) {
             return stream
                 .filter(it -> pluginRootDir.relativize(it).getNameCount() == PLUGIN_LIB_DIR_DEPTH)
-                .filter(it -> it.getParent().endsWith("lib"))
-                .filter(it -> it.getFileName().endsWith("jar"))
+                .filter(it -> it.getParent().toString().endsWith("lib"))
+                .filter(it -> it.getFileName().toString().endsWith("jar"))
                 .collect(Collectors.toList());
         }
     }

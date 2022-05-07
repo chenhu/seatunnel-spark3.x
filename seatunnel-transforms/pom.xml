@@ -31,7 +31,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>seatunnel-transforms-flink</module>
         <module>seatunnel-transforms-spark</module>
     </modules>
 

@@ -19,7 +19,6 @@ package org.apache.seatunnel.config;
 
 import org.apache.seatunnel.common.constants.JobMode;
 import org.apache.seatunnel.env.RuntimeEnv;
-import org.apache.seatunnel.flink.FlinkEnvironment;
 import org.apache.seatunnel.spark.SparkEnvironment;
 
 import org.apache.seatunnel.shade.com.typesafe.config.Config;
@@ -50,9 +49,6 @@ public class EnvironmentFactory<ENVIRONMENT extends RuntimeEnv> {
         switch (engine) {
             case SPARK:
                 env = (ENVIRONMENT) new SparkEnvironment().setEnableHive(enableHive);
-                break;
-            case FLINK:
-                env = (ENVIRONMENT) new FlinkEnvironment();
                 break;
             default:
                 throw new IllegalArgumentException("Engine: " + engine + " is not supported");

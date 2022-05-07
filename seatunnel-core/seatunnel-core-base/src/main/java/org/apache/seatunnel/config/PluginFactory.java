@@ -18,9 +18,6 @@
 package org.apache.seatunnel.config;
 
 import org.apache.seatunnel.env.RuntimeEnv;
-import org.apache.seatunnel.flink.BaseFlinkSink;
-import org.apache.seatunnel.flink.BaseFlinkSource;
-import org.apache.seatunnel.flink.BaseFlinkTransform;
 import org.apache.seatunnel.plugin.Plugin;
 import org.apache.seatunnel.spark.BaseSparkSink;
 import org.apache.seatunnel.spark.BaseSparkSource;
@@ -62,12 +59,6 @@ public class PluginFactory<ENVIRONMENT extends RuntimeEnv> {
         sparkBaseClassMap.put(PluginType.TRANSFORM, BaseSparkTransform.class);
         sparkBaseClassMap.put(PluginType.SINK, BaseSparkSink.class);
         PLUGIN_BASE_CLASS_MAP.put(EngineType.SPARK, sparkBaseClassMap);
-
-        Map<PluginType, Class<?>> flinkBaseClassMap = new HashMap<>();
-        flinkBaseClassMap.put(PluginType.SOURCE, BaseFlinkSource.class);
-        flinkBaseClassMap.put(PluginType.TRANSFORM, BaseFlinkTransform.class);
-        flinkBaseClassMap.put(PluginType.SINK, BaseFlinkSink.class);
-        PLUGIN_BASE_CLASS_MAP.put(EngineType.FLINK, flinkBaseClassMap);
     }
 
     public PluginFactory(Config config, EngineType engineType) {

@@ -17,7 +17,6 @@
 
 package org.apache.seatunnel.command;
 
-import org.apache.seatunnel.command.flink.FlinkCommandBuilder;
 import org.apache.seatunnel.command.spark.SparkCommandBuilder;
 
 public class CommandFactory {
@@ -34,8 +33,6 @@ public class CommandFactory {
     @SuppressWarnings("unchecked")
     public static <T extends AbstractCommandArgs> Command<T> createCommand(T commandArgs) {
         switch (commandArgs.getEngineType()) {
-            case FLINK:
-                return (Command<T>) new FlinkCommandBuilder().buildCommand((FlinkCommandArgs) commandArgs);
             case SPARK:
                 return (Command<T>) new SparkCommandBuilder().buildCommand((SparkCommandArgs) commandArgs);
             default:

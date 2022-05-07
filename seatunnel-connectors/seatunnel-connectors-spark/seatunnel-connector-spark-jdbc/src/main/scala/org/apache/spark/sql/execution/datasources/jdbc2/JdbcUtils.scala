@@ -374,9 +374,10 @@ object JdbcUtils extends Logging {
   def resultSetToRows(resultSet: ResultSet, schema: StructType): Iterator[Row] = {
     val inputMetrics =
       Option(TaskContext.get()).map(_.taskMetrics().inputMetrics).getOrElse(new InputMetrics)
-    val encoder = RowEncoder(schema).resolveAndBind()
+//    val encoder = RowEncoder(schema).resolveAndBind()
+    val deSer = RowEncoder(schema).resolveAndBind().createDeserializer()
     val internalRows = resultSetToSparkInternalRows(resultSet, schema, inputMetrics)
-    internalRows.map(encoder.fromRow)
+    internalRows.map(deSer)
   }
 
   private[spark] def resultSetToSparkInternalRows(
@@ -798,15 +799,15 @@ object JdbcUtils extends Logging {
   private def parseUserSpecifiedCreateTableColumnTypes(
                                                         df: DataFrame,
                                                         createTableColumnTypes: String): Map[String, String] = {
-    def typeName(f: StructField): String = {
-      // char/varchar gets translated to string type. Real data type specified by the user
-      // is available in the field metadata as HIVE_TYPE_STRING
-      if (f.metadata.contains(HIVE_TYPE_STRING)) {
-        f.metadata.getString(HIVE_TYPE_STRING)
-      } else {
-        f.dataType.catalogString
-      }
-    }
+//    def typeName(f: StructField): String = {
+//      // char/varchar gets translated to string type. Real data type specified by the user
+//      // is available in the field metadata as HIVE_TYPE_STRING
+//      if (f.metadata.contains(HIVE_TYPE_STRING)) {
+//        f.metadata.getString(HIVE_TYPE_STRING)
+//      } else {
+//        f.dataType.catalogString
+//      }
+//    }
 
     val userSchema = CatalystSqlParser.parseTableSchema(createTableColumnTypes)
     val nameEquality = df.sparkSession.sessionState.conf.resolver
@@ -826,7 +827,7 @@ object JdbcUtils extends Logging {
       }
     }
 
-    val userSchemaMap = userSchema.fields.map(f => f.name -> typeName(f)).toMap
+    val userSchemaMap = userSchema.fields.map(f => f.name -> f.toString()).toMap
     val isCaseSensitive = df.sparkSession.sessionState.conf.caseSensitiveAnalysis
     if (isCaseSensitive) userSchemaMap else CaseInsensitiveMap(userSchemaMap)
   }

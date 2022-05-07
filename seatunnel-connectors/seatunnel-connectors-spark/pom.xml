@@ -31,14 +31,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>seatunnel-connector-spark-doris</module>
         <module>seatunnel-connector-spark-file</module>
         <module>seatunnel-connector-spark-kafka</module>
         <module>seatunnel-connector-spark-socket</module>
         <module>seatunnel-connector-spark-redis</module>
         <module>seatunnel-connector-spark-phoenix</module>
-        <module>seatunnel-connector-spark-mongodb</module>
-        <module>seatunnel-connector-spark-kudu</module>
         <module>seatunnel-connector-spark-jdbc</module>
         <module>seatunnel-connector-spark-hive</module>
         <module>seatunnel-connector-spark-fake</module>
@@ -49,11 +46,7 @@
         <module>seatunnel-connector-spark-clickhouse</module>
         <module>seatunnel-connector-spark-email</module>
         <module>seatunnel-connector-spark-tidb</module>
-        <module>seatunnel-connector-spark-neo4j</module>
-        <module>seatunnel-connector-spark-iceberg</module>
-        <module>seatunnel-connector-spark-feishu</module>
         <module>seatunnel-connector-spark-http</module>
-        <module>seatunnel-connector-spark-webhook</module>
     </modules>
 
 </project>

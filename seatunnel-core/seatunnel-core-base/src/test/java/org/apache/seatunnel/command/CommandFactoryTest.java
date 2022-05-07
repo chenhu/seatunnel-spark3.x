@@ -17,8 +17,6 @@
 
 package org.apache.seatunnel.command;
 
-import org.apache.seatunnel.command.flink.FlinkConfValidateCommand;
-import org.apache.seatunnel.command.flink.FlinkTaskExecuteCommand;
 import org.apache.seatunnel.command.spark.SparkConfValidateCommand;
 import org.apache.seatunnel.command.spark.SparkTaskExecuteCommand;
 
@@ -41,24 +39,5 @@ public class CommandFactoryTest {
         sparkCommandArgs.setCheckConfig(false);
         Command<SparkCommandArgs> sparkCommand = CommandFactory.createCommand(sparkCommandArgs);
         Assert.assertEquals(SparkTaskExecuteCommand.class, sparkCommand.getClass());
-    }
-
-    @Test
-    public void testCreateFlinkConfValidateCommand() {
-        FlinkCommandArgs flinkCommandArgs = new FlinkCommandArgs();
-        flinkCommandArgs.setCheckConfig(true);
-
-        Command<FlinkCommandArgs> flinkCommand = CommandFactory.createCommand(flinkCommandArgs);
-        Assert.assertEquals(FlinkConfValidateCommand.class, flinkCommand.getClass());
-    }
-
-    @Test
-    public void testCreateFlinkExecuteTaskCommand() {
-        FlinkCommandArgs flinkCommandArgs = new FlinkCommandArgs();
-        flinkCommandArgs.setCheckConfig(false);
-
-        Command<FlinkCommandArgs> flinkCommand = CommandFactory.createCommand(flinkCommandArgs);
-        Assert.assertEquals(FlinkTaskExecuteCommand.class, flinkCommand.getClass());
-
     }
 }

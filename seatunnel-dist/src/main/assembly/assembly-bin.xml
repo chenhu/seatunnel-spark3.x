@@ -44,26 +44,6 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>../seatunnel-core/seatunnel-core-flink/target</directory>
-            <includes>
-                <include>seatunnel-core-flink*.jar</include>
-            </includes>
-            <excludes>
-                <exclude>%regex[.*((javadoc)|(sources))\.jar]</exclude>
-            </excludes>
-            <outputDirectory>/lib</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>../seatunnel-core/seatunnel-core-flink/src/main/bin</directory>
-            <outputDirectory>/bin</outputDirectory>
-            <fileMode>0755</fileMode>
-        </fileSet>
-        <fileSet>
-            <directory>../seatunnel-core/seatunnel-core-flink-sql/src/main/bin</directory>
-            <outputDirectory>/bin</outputDirectory>
-            <fileMode>0755</fileMode>
-        </fileSet>
-        <fileSet>
             <directory>../seatunnel-core/seatunnel-core-spark/src/main/bin</directory>
             <outputDirectory>/bin</outputDirectory>
             <fileMode>0755</fileMode>
@@ -72,16 +52,6 @@
             <directory>../seatunnel-core/seatunnel-core-spark/target</directory>
             <includes>
                 <include>seatunnel-core-spark*.jar</include>
-            </includes>
-            <excludes>
-                <exclude>%regex[.*((javadoc)|(sources))\.jar]</exclude>
-            </excludes>
-            <outputDirectory>/lib</outputDirectory>
-        </fileSet>
-        <fileSet>
-            <directory>../seatunnel-core/seatunnel-core-flink-sql/target</directory>
-            <includes>
-                <include>seatunnel-core-flink-sql*.jar</include>
             </includes>
             <excludes>
                 <exclude>%regex[.*((javadoc)|(sources))\.jar]</exclude>

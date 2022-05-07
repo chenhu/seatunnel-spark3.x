@@ -31,7 +31,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>seatunnel-connectors-flink</module>
         <module>seatunnel-connectors-spark</module>
     </modules>
 
